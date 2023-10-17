@@ -1,0 +1,32 @@
+[
+    {
+        "action": "Narudzba",
+        "Parameters": [
+            {
+                "narudzba_id": 50,
+                "narucitelj": "CADCAM",
+                "prodavac": "Mile",
+                "datumNarudzbe": "2023-09-22",
+                "datumDostave": "2023-09-23",
+                "adresaDostave": "Štoosova 1, 10 000 Zagreb"
+            }
+        ],
+        "Data": [
+            {
+                "narudzba_id": 50,
+                "p_Naziv": "ABC123",
+                "p_bar_cod": "125056789"
+            },
+            {
+                "narudzba_id": 50,
+                "p_Naziv": "qwe123",
+                "p_bar_cod": "450543"
+            },
+            {
+                "narudzba_id": 50,
+                "p_Naziv": "jhg123",
+                "p_bar_cod": "986796550550"
+            }
+        ]
+    }
+]

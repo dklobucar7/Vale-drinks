@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Popis proizvoda prema narudzbi</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container-fluid">
+       <!--NAVBAR-->
+       <div class="container-fluid">
+        <header class="d-flex py-3">
+          <a class="navbar-brand float-left" href="index.html">
+            <img src="./asstes/logo.png" alt="Logo" height="30" />
+          </a>
+          <ul class="nav mx-auto">
+            <li class="nav-item">
+              <a href="index.html" class="nav-link active" aria-current="page"
+                >Nova narudžba</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="narudzbe.html" class="nav-link" aria-current="page"
+                >Sve narudžbe</a
+              >
+            </li>
+            <li class="nav-orders-items">
+              <a href="narudzbe-items.html" class="nav-link" aria-current="page"
+                >Proizvodi prema narudžbama</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="novi_korisnik.html" class="nav-link">Novi korisnik</a>
+            </li>
+          </ul>
+        </header>
+      </div>
+    </div>
+      <!--NAVBAR-->
+    <div class="container-fluid">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID Narudžbe</th>
+            <th scope="col">Prodavač</th>
+            <th scope="col">Naziv Klijenta</th>
+            <th scope="col">Datum naručivanja</th>
+            <th scope="col">Planirani datum isporuke</th>
+            <th scope="col">Uređivanje</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <!--ID NARUDŽBE-->
+            <td scope="row" id="idNarudzbe"></td>
+            <!--PRODAVAČ-->
+            <td scope="row" id="prodavac"></td>
+            <!--NAZIV KLIJENTA-->
+            <td scope="row" id="nazivKlijenta"></td>
+            <!--DATUM NARUDZBE-->
+            <td id="datumNarudzbe"></td>
+            <!--DATUM DOSTAVE-->
+            <td scope="row" id="datumDostave"></td>
+            <!--BUTTON EDIT-->
+            <td>
+              <button class="btn btn-primary">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-pencil"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"
+                  />
+                </svg>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      // Function to parse query parameters and display JSON data
+      function displayData() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const jsonData = urlParams.get("data");
+
+        if (jsonData) {
+          const data = JSON.parse(jsonData);
+
+          //Get element
+          const dataDisplay = document.getElementById("idNarudzbe");
+          const dataProdavac= document.getElementById("prodavac")
+          const dataNazivKlijenta = document.getElementById("nazivKlijenta");
+          const dataDatumNarudzbe = document.getElementById("datumNarudzbe");
+          const dataDatumDostave =
+            document.getElementById("datumDostave");
+
+
+          //Hej
+          // Create an HTML list to display the data
+          const dataList = document.createElement("row");
+          dataList.innerHTML = `
+                    ${data.narudzbaId}`;
+          
+          // Create for PRODAVAC
+          const dataProd = document.createElement("row");
+          dataProd.innerHTML=`
+                    ${data.prodavac}`;
+
+          //Create for NARUCITELJ
+          const dataKlijent = document.createElement("row");
+          dataKlijent.innerHTML = `
+                    ${data.narucitelj}`;
+
+          //Create for DATUM NARUDZBE
+          const dataNarudzbe = document.createElement("row");
+          dataNarudzbe.innerHTML = `
+                    ${data.datumNarudzbe}`;
+
+          //Create for DATUM DOSTAVE
+          const dataDostave = document.createElement("row");
+          dataDostave.innerHTML = `
+                    ${data.datumDostave}`;
+
+
+
+
+          // APPEND CHILD
+          dataDisplay.appendChild(dataList);
+          dataProdavac.appendChild(dataProd);
+          dataNazivKlijenta.appendChild(dataKlijent);
+          dataDatumNarudzbe.appendChild(dataNarudzbe);
+          dataDatumDostave.appendChild(dataDostave);
+
+
+        } else {
+          alert("False");
+        }
+      }
+      // Call the displayData function when the page loads
+      window.addEventListener("load", displayData);
+    </script>
+  </body>
+</html>

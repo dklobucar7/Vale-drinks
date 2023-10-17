@@ -1,0 +1,18 @@
+'{
+    "narudzbaId": "1",
+    "narucitelj": "CADCAM",
+    "prodavac": "Mile",
+    "datumNarudzbe": "22/09/2023",
+    "datumDostave": "23/09/2023",
+    "adresaDostave": "Štoosova 1, 10 000 Zagreb",
+    "data": [
+        {
+            "nazivArtikla": "Chivas Regal",
+            "barcode": "123"
+        },
+        {
+            "nazivArtikla": "Chivas Regal",
+            "barcode": "123"
+        }
+    ]
+}'

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Order Form</title>
+  </head>
+  <body>
+    <h1>Order Form</h1>
+    <form id="order-form">
+      <!-- Form fields for narudzba_id, narucitelj, prodavac, datumNarudzbe, and datumDostave -->
+      <label for="narudzba_id">Narudzba ID:</label>
+      <input type="text" id="narudzba_id" name="narudzba_id" required />
+
+      <label for="narucitelj">Narucitelj:</label>
+      <input type="text" id="narucitelj" name="narucitelj" required />
+
+      <label for="prodavac">Prodavac:</label>
+      <input type="text" id="prodavac" name="prodavac" required />
+
+      <label for="datumNarudzbe">Datum Narudzbe:</label>
+      <input type="date" id="datumNarudzbe" name="datumNarudzbe" required />
+
+      <label for="datumDostave">Datum Dostave:</label>
+      <input type="date" id="datumDostave" name="datumDostave" required />
+
+      <!-- Table for order details -->
+      <table id="order-table">
+        <thead>
+          <tr>
+            <th>Narudzba ID</th>
+            <th>p_bar-cod</th>
+            <!-- Renamed Barcode column -->
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Rows will be added dynamically using JavaScript -->
+        </tbody>
+      </table>
+      <button type="button" id="add-row">Add Row</button>
+      <button type="submit" id="save-form">Save</button>
+    </form>
+    <script src="script5.js"></script>
+  </body>
+</html>

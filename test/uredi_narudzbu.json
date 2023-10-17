@@ -1,0 +1,52 @@
+{
+    "prodavac": "Mile",
+    "narucitelj": "CADCAM",
+    "narudzba_id": 32,
+    "datumDostave": "2023-09-23",
+    "adresaDostave": "Štoosova 1,10 000 Zagreb",
+    "datumNarudzbe": "2023-09-22",
+    "narudzba_stavke": [
+        {
+            "p_Naziv": "jhg123",
+            "kolicina": 0,
+            "p_bar_cod": 2147483647,
+            "narudzba_id": 32,
+            "narudzba_stavke_id": 9
+        },
+        {
+            "p_Naziv": "qwe123",
+            "kolicina": 0,
+            "p_bar_cod": 432543,
+            "narudzba_id": 32,
+            "narudzba_stavke_id": 8
+        },
+        {
+            "p_Naziv": "ABC123",
+            "kolicina": 0,
+            "p_bar_cod": 123456789,
+            "narudzba_id": 32,
+            "narudzba_stavke_id": 7
+        },
+        {
+            "p_Naziv": "jhg123",
+            "kolicina": 0,
+            "p_bar_cod": 2147483647,
+            "narudzba_id": 32,
+            "narudzba_stavke_id": 6
+        },
+        {
+            "p_Naziv": "qwe123",
+            "kolicina": 0,
+            "p_bar_cod": 432543,
+            "narudzba_id": 32,
+            "narudzba_stavke_id": 5
+        },
+        {
+            "p_Naziv": "ABC123",
+            "kolicina": 0,
+            "p_bar_cod": 123456789,
+            "narudzba_id": 32,
+            "narudzba_stavke_id": 4
+        }
+    ]
+}

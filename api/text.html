@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <!--DATE PICKER DATUM NARUDŽBE i VRIJEME DOSTAVE-->
+    <!-- Include Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <!-- Include Flatpickr CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />    
+</head>
+
+<body>
+    <H1>Moja lista</H1>
+
+    <label for="list-clients-choice">Odaberi:</label>
+    <input list="list-clients" id="list-clients-choice" name="list-clients-choice" />
+
+    <!--LISTA KLIJENTA-->
+    <datalist id="list-clients">
+        <option>CADCAM</option>
+    </datalist>
+    <script>
+        // Definirajte funkciju za popunjavanje option liste
+        function popuniOptionListu(data) {
+            const datalist = document.getElementById('list-clients');
+
+            // Prolazimo kroz dobivene podatke i dodajemo ih kao opcije u datalist
+            data.forEach(client => {
+                const option = document.createElement('option');
+                option.value = client.ime;
+                datalist.appendChild(option);
+            });
+        }
+
+        // Definirajte podatke za POST zahtjev
+        const postData = [
+            {
+                "action": "Klijenti"
+            }
+        ];
+
+        // POST zahtjev na API endpoint
+        fetch('https://demo.cadcam-group.eu/api/', {
+            method: 'POST',
+            body: JSON.stringify(postData),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                // Pozivamo funkciju za popunjavanje option liste s dobivenim podacima
+                popuniOptionListu(data);
+            })
+            .catch(error => {
+                console.error('Došlo je do pogreške:', error);
+            });
+
+    </script>
+</body>
+
+</html>
