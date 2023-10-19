@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
         //Handle success
         console.log("Uređivanje narudzbe");
         console.log(JSON.stringify(rowData));
+        return response.json();
       } else {
         //Handle error
         console.error("Error sending data.");

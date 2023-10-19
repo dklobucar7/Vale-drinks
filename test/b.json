@@ -1,0 +1,39 @@
+[
+    {
+        "narudzba_json": "{"prodavac": "Mikula Mali","narucitelj": "Legiero kod mosta","narudzba_id": 140,
+        "datumDostave": "2023-10-18",
+        "adresaDostave": "Most 33",
+        "datumNarudzbe": "2023-10-09",
+        "narudzba_stavke": [
+            {
+                "p_Naziv": "JAGERMEISTER SCHARF SA ČAŠOM",
+                "kolicina": 0,
+                "p_bar_cod": 2147483647,
+                "narudzba_id": 140,
+                "narudzba_stavke_id": 88
+            },
+            {
+                "p_Naziv": "JAGERMEISTER",
+                "kolicina": 0,
+                "p_bar_cod": 2147483647,
+                "narudzba_id": 140,
+                "narudzba_stavke_id": 87
+            },
+            {
+                "p_Naziv": "JAGERMEISTER",
+                "kolicina": 0,
+                "p_bar_cod": 2147483647,
+                "narudzba_id": 140,
+                "narudzba_stavke_id": 86
+            },
+            {
+                "p_Naziv": "JAGERMEISTER SCHARF SA ČAŠOM",
+                "kolicina": 0,
+                "p_bar_cod": 2147483647,
+                "narudzba_id": 140,
+                "narudzba_stavke_id": 85
+            }
+        ]
+    }
+}
+]
