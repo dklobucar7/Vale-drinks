@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fetch Data with XMLHttpRequest</title>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>Red. broj</th>
+          <th>Naziv</th>
+          <th>Sadržaj</th>
+          <th>Tip</th>
+        </tr>
+      </thead>
+      <tbody id="tbody">
+        <!--Insert rows here-->
+      </tbody>
+    </table>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialization of DOM elements
+        const tableBody = document.getElementById("tbody");
+        let id = 1;
+
+        function createRow(data) {
+          // Create a new table row element
+          const newRow = document.createElement("tr");
+
+          // Populate row with data from the XMLHttpRequest response
+          newRow.innerHTML = `
+                <td>${id}</td>
+                <td>${data.Naziv}</td>
+                <td>${data.Sadrzaj}</td>
+                <td>${data.tip}</td>
+                `;
+
+          // Append the new row to the table
+          tableBody.appendChild(newRow);
+
+          // Increment id for the next row
+          id++;
+        }
+
+        // Use XMLHttpRequest to make a GET request
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://demo.cadcam-group.eu/api/", true);
+
+        xhr.onload = function () {
+          if (xhr.status === 200) {
+            const data = JSON.parse(xhr.responseText);
+            data.forEach((item) => {
+              createRow(item);
+            });
+          } else {
+            console.error("Došlo je do pogreške pri dohvaćanju podataka.");
+          }
+        };
+
+        xhr.send();
+      });
+    </script>
+  </body>
+</html>

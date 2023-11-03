@@ -1,0 +1,7 @@
+CREATE ROLE knjiznica_user WITH LOGIN PASSWORD '123';
+CREATE DATABASE knjiznica OWNER knjiznica_user TEMPLATE template0;
+ALTER SCHEMA public OWNER to knjiznica_user; 
+
+cd /etc/postgresql/postgresql 13/main
+
+psql -p 5433 –U knjiznica_user -d knjiznica -f create_db.sql

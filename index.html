@@ -187,26 +187,6 @@
               </div>
             </div>
             
-            <!--ADRESA DOSTAVE-->
-            <!--
-            <div class="row mb-3">
-              <label
-                for="adresa"
-                class="input-group-text col-sm-3 col-form-label"
-                >Adresa</label
-              >
-              <div class="col">
-                <input
-                  type="text"
-                  class="form-control"
-                  name="adresa"
-                  id="adresa"
-                  list="list-address"
-                  value=""
-                  required
-                />
-              </div>
-            </div>    -->  
             <!--TABLICA-->
             <table class="table mt-3" id="tablica">
               <thead>
@@ -214,13 +194,13 @@
                   <th class="col-7">Naziv Artikla</th>
 
                   <th class="col-2">Količina</th>
-                  <th class="col-2">Cijena <i class="fas fa-euro-sign"></i></th>
+                  <th class="col-2">Cijena</th>
                   <th class="col-1"></th>
                   <th class="col-0" type="hidden"></th>
                 </tr>
               </thead>
               <tbody id="tbody">
-                
+                <!--Adding rows-->
               </tbody>
             </table>
   
@@ -300,20 +280,7 @@
       });
 
   
-// GET method Populate data from "https://demo.cadcam-group.eu/api" to table NAZIV ARTIKLA/
-fetch("https://demo.cadcam-group.eu/api")
-  .then((res) => res.json())
-  .then((data) => {
-    data.forEach((user) => {
-      const markup = `<option id="option-item" data-barcode="${user.BAR_COD}">${
-        user.Naziv + " - " + user.Sadrzaj + " - " + user.Pak + " - " + user.BAR_COD
-      }</option>`;
-      document
-        .querySelector("#list-products")
-        .insertAdjacentHTML("beforeend", markup);
-    });
-  })
-  .catch((error) => console.log(error));
+
   
 
 

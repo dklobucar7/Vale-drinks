@@ -40,14 +40,18 @@ document.addEventListener("DOMContentLoaded", function () {
   fetch("https://demo.cadcam-group.eu/api/", requestOptions)
     .then((response) => {
       if (response.ok) {
-        //Handle success
-        console.log("Uređivanje narudzbe");
-        console.log(JSON.stringify(rowData));
-        return response.json();
+        // Handle success
+        console.log(response.json());
       } else {
-        //Handle error
+        // Handle error
         console.error("Error sending data.");
       }
+    })
+    .then((data) => {
+      // Parse the "narudzba_json" key and get the "VALUE"
+      const narudzbaJson = JSON.parse(data[0].narudzba_json);
+      const value = narudzbaJson.VALUE;
+      console.log("VALUE:", value);
     })
     .catch((error) => {
       console.error("Error:", error);

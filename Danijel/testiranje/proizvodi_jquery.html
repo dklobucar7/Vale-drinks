@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fetch Data with jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>Red. broj</th>
+          <th>Naziv</th>
+          <th>Sadržaj</th>
+          <th>Tip</th>
+        </tr>
+      </thead>
+      <tbody id="tbody">
+        <!--Insert rows here-->
+      </tbody>
+    </table>
+
+    <script>
+      $(document).ready(function () {
+        // Initialization of DOM elements
+        const tableBody = $("#tbody");
+        let id = 1;
+
+        function createRow(data) {
+          // Create a new table row element
+          const newRow = $("<tr>");
+
+          // Populate row with data from the AJAX response
+          newRow.html(`
+            <td>${id}</td>
+            <td>${data.Naziv}</td>
+            <td>${data.Sadrzaj}</td>
+            <td>${data.tip}</td>
+          `);
+
+          // Append the new row to the table
+          tableBody.append(newRow);
+
+          // Increment id for the next row
+          id++;
+        }
+
+        // Use jQuery to make a GET request
+        $.ajax({
+          url: "https://demo.cadcam-group.eu/api/",
+          method: "GET",
+          dataType: "json",
+          success: function (data) {
+            // Process the data
+            data.forEach(function (item) {
+              createRow(item);
+            });
+          },
+          error: function (error) {
+            console.error("Došlo je do pogreške pri dohvaćanju podataka.");
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

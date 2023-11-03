@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Valentic d.o.o.</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <!--DATE PICKER DATUM NARUDŽBE i VRIJEME DOSTAVE-->
+    <!-- Include Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <!-- Include Flatpickr CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+
+    <!--STYLE.CSS-->
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <!--NAVBAR-->
+    <div class="container-fluid">
+      <header class="d-flex py-3">
+        <a class="navbar-brand float-left" href="index.html">
+          <img src="./asstes/logo.png" alt="Logo" height="30" />
+        </a>
+        <ul class="nav mx-auto">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link active" aria-current="page"
+              >Nova narudžba</a
+            >
+          </li>
+          <li class="nav-item">
+            <a href="narudzbe.html" class="nav-link" aria-current="page"
+              >Sve narudžbe</a
+            >
+          </li>
+          <li class="nav-orders-items">
+            <a href="narudzbe-items.html" class="nav-link" aria-current="page"
+              >Proizvodi prema narudžbama</a
+            >
+          </li>
+          <li class="nav-item">
+            <a href="novi_korisnik.html" class="nav-link">Novi korisnik</a>
+          </li>
+          <li class="nav-item">
+            <a href="uredivanje_narudzbe.html" class="nav-link" aria-current="page"
+              >Uređivanje narudžbe</a
+            >
+          </li>
+        </ul>
+      </header>
+    </div>
+  </div>
+    <!--NAVBAR-->
+
+    <div class="container-fluid" id="main-container">
+      <div class="container-fluid" id="formOrderData-container">
+        <!--FORMA-->
+        <form id="orderForm">
+         
+            <!--ID NARUDŽBE-->
+            <div class="row my-3">
+              <label
+                for="narudzba_id"
+                class="input-group-text col-sm-3 col-form-label"
+                >NARUDŽBA</label
+              >
+              <div class="col">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="narudzba_id"
+                  id="narudzba_id"
+                  required
+                />
+              </div>
+            </div>
+             <!--PRODAVAČ-->
+          <div class="row mb-3">
+            <label
+              for="prodavac"
+              class="input-group-text col-sm-3 col-form-label"
+              >Prodavač</label
+            >
+            <div class="col">
+              <input
+                type="text"
+                class="form-control"
+                name="prodavac"
+                id="prodavac"
+                list="list-salesman"
+                required
+              />
+            </div>
+          </div>
+            <!--NARUČITELJ-->
+            <div class="row mb-3">
+              <label
+                for="narucitelj"
+                class="input-group-text col-sm-3 col-form-label"
+                >Naručitelj</label
+              >
+              <div class="col">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="narucitelj"
+                  id="narucitelj"
+                  list="list-clients"
+                  required
+                />
+              </div>
+              <!--Button + kreiraj Naručitelja-->
+              <a
+                class="btn btn-success mr-3"
+                target="_blank"
+                href="novi_korisnik.html"
+                role="button"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-plus-circle"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+                  />
+                  <path
+                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+                  />
+                </svg>
+              </a>
+            </div>
+
+            <!--DATUM KREIRANJE NARUDŽBE-->
+
+            <div class="row mb-3">
+              <label
+                for="datumNarudzbe"
+                class="input-group-text col-sm-3 col-form-label"
+                >Datum narudžbe</label
+              >
+              <div class="col">
+                <input
+                  type="text"
+                  id="datumNarudzbe"
+                  name="datumNarudzbe"
+                  class="form-control"
+                />
+              </div>
+            </div>
+
+            <!--DATUM DOSTAVE-->
+            <div class="row mb-3">
+              <label
+                for="datum-dostave"
+                class="input-group-text col-sm-3 col-form-label"
+                >Datum dostave</label
+              >
+              <div class="col">
+                <input
+                  type="text"
+                  id="datumDostave"
+                  name="datumDostave"
+                  class="form-control"
+                />
+              </div>
+            </div>
+            
+            <!--ADRESA DOSTAVE-->
+            <!--
+            <div class="row mb-3">
+              <label
+                for="adresa"
+                class="input-group-text col-sm-3 col-form-label"
+                >Adresa</label
+              >
+              <div class="col">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="adresa"
+                  id="adresa"
+                  list="list-address"
+                  value=""
+                  required
+                />
+              </div>
+            </div>    -->  
+            <!--TABLICA-->
+            <table class="table mt-3" id="tablica">
+              <thead>
+                <tr>
+                  <th class="col-7">Naziv Artikla</th>
+
+                  <th class="col-2">Količina</th>
+                  <th class="col-2">Cijena <i class="fas fa-euro-sign"></i></th>
+                  <th class="col-1"></th>
+                  <th class="col-0" type="hidden"></th>
+                </tr>
+              </thead>
+              <tbody id="tbody">
+                
+              </tbody>
+            </table>
+  
+            <!--BUTTON DODAJTE ARTIKL-->
+            <a class="btn btn-success mr-3" role="button" id="addRow">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-plus-lg"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
+                />
+              </svg>
+            </a>
+          </div>
+  
+          <!--BUTTON SUBMIT TABLE ITEMS-->
+          <div class="row mt-3 mr-1 float-right" id="button-submit">
+            <button type="submit" class="btn btn-primary">
+              Spremi Narudžbu
+            </button>
+          </div>
+          </form>
+           <!--KRAJ FORME-->
+
+        </div>
+
+
+
+      <!--LISTA PRODAVAČA-->
+      <datalist id="list-salesman">
+        <option>Ivan Horvat</option>
+        <option>Marko Horvat</option>
+
+      </datalist>
+      <!--LISTA PRODUKTA-->
+      <datalist id="list-products">
+      </datalist>
+      <!--LISTA KLIJENTA-->
+      <datalist id="list-clients">
+      </datalist>
+      <!--LISTA Adresa-->
+      <datalist id="list-address"></datalist>
+    </div>
+
+    <script src="index.js" charset="UTF-8"></script>
+    <!-- Include Bootstrap and Flatpickr JavaScript DATUM NARUDŽBE-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      // Initialize Flatpickr with the desired options
+      flatpickr("#datumNarudzbe", {
+        dateFormat: "Y-m-d",
+        defaultDate: "today", // Set the default date to today
+        allowInput: true, // Allow manual input
+      });
+      flatpickr("#datumDostave", {
+        dateFormat: "Y-m-d",
+        allowInput: true, // Allow manual input
+      });
+
+  
+// GET method Populate data from "https://demo.cadcam-group.eu/api" to table NAZIV ARTIKLA/
+fetch("https://demo.cadcam-group.eu/api")
+  .then((res) => res.json())
+  .then((data) => {
+    data.forEach((user) => {
+      const markup = `<option id="option-item" data-barcode="${user.BAR_COD}">${
+        user.Naziv + " - " + user.Sadrzaj + " - " + user.Pak + " - " + user.BAR_COD
+      }</option>`;
+      document
+        .querySelector("#list-products")
+        .insertAdjacentHTML("beforeend", markup);
+    });
+  })
+  .catch((error) => console.log(error));
+  
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // Populate data from "https://demo.cadcam-group.eu/api" to PRODAVAČ
+      // Definiranje funkcije za popunjavanje option liste
+      function popuniOptionListuProdavac(data) {
+        const datalistProdavac = document.getElementById("list-salesman");
+        // Prolazimo kroz dobivene podatke i dodajemo ih kao opcije u datalist
+        data.forEach(client =>{
+          const optionProdavac = document.createElement('option');
+          optionProdavac.value = client.ime + " " + client.prezime;
+          datalistProdavac.appendChild(optionProdavac);
+        });
+      }
+      // Definiranje podataka za POST zahtjev
+      const postDataProdavac = [
+    {
+        "action": "Prodavaci"
+    }
+];
+      // POST zahtjev na API endpoint
+      fetch('https://demo.cadcam-group.eu/api/', {
+        method: 'POST',
+        body: JSON.stringify(postDataProdavac),
+        headers: {
+          'Content-Type':'application/json'
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Pozivamo funkciju za popunjavanje option liste s dobivenim podacima
+        popuniOptionListuProdavac(data);
+      })
+      .catch(error => {
+        console.error('Došlo je do pogreške:', error);
+      })
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Populate data from "https://demo.cadcam-group.eu/api" to NARUČITELJ
+  // Definiranje funkciju za popunjavanje option liste
+  function popuniOptionListuNarucitelj(data) {
+      const datalist = document.getElementById('list-clients');
+
+      // Prolazimo kroz dobivene podatke i dodajemo ih kao opcije u datalist
+      data.forEach(client => {
+          const option = document.createElement('option');
+          option.value = client.ime + " - " + client.adresa;
+          datalist.appendChild(option);
+      });
+  }
+
+  // Definirajte podatke za POST zahtjev
+  const postDataNarucitelji = [
+      {
+          "action": "Klijenti"
+      }
+  ];
+
+  // POST zahtjev na API endpoint
+  fetch('https://demo.cadcam-group.eu/api/', {
+      method: 'POST',
+      body: JSON.stringify(postDataNarucitelji),
+      headers: {
+          'Content-Type': 'application/json'
+      }
+  })
+      .then(response => response.json())
+      .then(data => {
+          // Pozivamo funkciju za popunjavanje option liste s dobivenim podacima
+          popuniOptionListuNarucitelj(data);
+      })
+      .catch(error => {
+          console.error('Došlo je do pogreške:', error);
+      });
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// PRVI SLOBODNI ID za novu narudžbu
+
+// Definiranje podataka za POST zahtjev
+const postDataNarudzbaId = [
+      {
+        "action": "Narudzba_ID"
+      }
+  ];
+
+  // POST zahtjev na API endpoint
+  fetch('https://demo.cadcam-group.eu/api/', {
+      method: 'POST',
+      body: JSON.stringify(postDataNarudzbaId),
+      headers: {
+          'Content-Type': 'application/json'
+      }
+  })
+      .then(response => response.json())
+      .then(data => {
+          const narudzbaId= document.getElementById("narudzba_id");
+
+          narudzbaId.value = `${data[0].NextID}`;
+      })
+      .catch(error => {
+          console.error('Došlo je do pogreške:', error);
+      });
+//
+
+    </script>
+  </body>
+</html>
+
+

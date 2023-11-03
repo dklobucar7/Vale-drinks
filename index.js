@@ -1,3 +1,20 @@
+// Function to fetch item price and update the table row
+function fetchItemPrice(inputElement) {
+  // Define selectElement here to access the select element
+  const selectElement = document.getElementById("list-products");
+
+  const selectedOption = Array.from(
+    selectElement.querySelectorAll("option")
+  ).find((option) => option.value === inputElement.value);
+
+  if (selectedOption) {
+    const price = selectedOption.getAttribute("data-price");
+    const row = inputElement.closest("tr");
+    const priceInput = row.querySelector("#cijena");
+    priceInput.value = price;
+  }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   //Initialization of DOM elements
   const orderForm = document.getElementById("orderForm");
@@ -5,35 +22,32 @@ document.addEventListener("DOMContentLoaded", function () {
   const addRowButton = document.getElementById("addRow");
 
   //Add a new row to table
+  // Add a new row to the table and fetch the price for the selected item
   addRowButton.addEventListener("click", function () {
     const newRow = `
-    <tr>
-      
-      <td>
-        <input 
-        type="text"
-        class="form-control"
-        list="list-products"
-        id="nazivPR"
-        name="p_naziv" />
-      </td>
-      
-      
-
-      <td>
-        <input type="number" class="form-control" id="quantity" />
-      </td>
-
-      <td>
-        <input
-          type="number"
-          class="form-control"
-          id="cijena"
-          step="0.01"
-        />
-      </td>
-
-      <td>
+      <tr>
+        <td>
+          <input 
+            type="text"
+            class="form-control"
+            list="list-products"
+            id="nazivPR"
+            name="p_naziv"
+            oninput="fetchItemPrice(this)"
+          />
+        </td>
+        <td>
+          <input type="number" class="form-control" id="quantity" />
+        </td>
+        <td>
+          <input
+            type="number"
+            class="form-control"
+            id="cijena"
+            step= 0.01
+          />
+        </td>
+        <td>
         <button class="btn btn-danger deleteBtn delete-row">
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -48,9 +62,9 @@ document.addEventListener("DOMContentLoaded", function () {
             />
           </svg>
           </button>
-      </td>
-      <td><input type="hidden" id="hidden_barcode" name="barcode"></td>
-  </tr>
+        </td>
+        <td><input type="hidden" id="hidden_barcode" name="barcode"></td>
+      </tr>
     `;
     orderTableBody.insertAdjacentHTML("beforeend", newRow);
   });
@@ -59,6 +73,30 @@ document.addEventListener("DOMContentLoaded", function () {
   $("table").on("click", ".deleteBtn", function () {
     $(this).closest("tr").remove();
   });
+
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  // GET method Populate data from "https://demo.cadcam-group.eu/api" to table NAZIV ARTIKLA/
+  fetch("https://demo.cadcam-group.eu/api")
+    .then((res) => res.json())
+    .then((data) => {
+      data.forEach((user) => {
+        const markup = `<option id="option-item" data-barcode="${
+          user.BAR_COD
+        }" data-price="${user.VPC_kn}">${
+          user.Naziv +
+          " - " +
+          user.Sadrzaj +
+          " - " +
+          user.Pak +
+          " - " +
+          user.BAR_COD
+        }</option>`;
+        document
+          .querySelector("#list-products")
+          .insertAdjacentHTML("beforeend", markup);
+      });
+    })
+    .catch((error) => console.log(error));
 
   ///////////////////////////////////////////////////////////////////////////////////////////////
   //SAVE ORDER
@@ -89,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
       //Naziv artikla ima spojeno više podataka, ovdje razdvajamo sve podatke i dodijeljujemo ih prema specificnim poljima
       const p_NazivAllElements = row.querySelector("#nazivPR").value;
       const parts = p_NazivAllElements.split(" - ");
-      const p_NazivFirstElement = parts[0];
+      //const p_NazivFirstElement = parts[0]; //trenutno ga ne koristimo jer ipak upisujemo sve podatke u JSON
 
       // Dohvatite odabrani proizvod iz datalista na temelju vrijednosti iz #nazivPR - ovako moramo raditi
       const selectedOption = Array.from(
@@ -98,10 +136,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const barcode = selectedOption.getAttribute("data-barcode");
 
+      const kolicina = row.querySelector("#quantity").value;
+
+      const cijena = selectedOption.getAttribute("data-price");
+
       const rowData = {
         narudzba_id: formData.get("narudzba_id"),
-        p_Naziv: p_NazivFirstElement,
+        p_Naziv: p_NazivAllElements,
         p_bar_cod: barcode,
+        kolicina: kolicina,
+        cijena: cijena,
       };
       formDataJSON.Data.push(rowData);
     }
@@ -119,7 +163,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((response) => {
         if (response.ok) {
           //Handle success
-          console.log("Data sent successfully!");
+
           alert("Data sent successfully!");
           console.log(JSON.stringify([formDataJSON]));
         } else {
