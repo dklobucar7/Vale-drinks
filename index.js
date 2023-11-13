@@ -2,11 +2,9 @@
 function fetchItemPrice(inputElement) {
   // Define selectElement here to access the select element
   const selectElement = document.getElementById("list-products");
-
   const selectedOption = Array.from(
     selectElement.querySelectorAll("option")
   ).find((option) => option.value === inputElement.value);
-
   if (selectedOption) {
     const price = selectedOption.getAttribute("data-price");
     const row = inputElement.closest("tr");
@@ -14,13 +12,11 @@ function fetchItemPrice(inputElement) {
     priceInput.value = price;
   }
 }
-
 document.addEventListener("DOMContentLoaded", function () {
   //Initialization of DOM elements
   const orderForm = document.getElementById("orderForm");
   const orderTableBody = document.getElementById("tbody");
   const addRowButton = document.getElementById("addRow");
-
   //Add a new row to table
   // Add a new row to the table and fetch the price for the selected item
   addRowButton.addEventListener("click", function () {
@@ -68,12 +64,10 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
     orderTableBody.insertAdjacentHTML("beforeend", newRow);
   });
-
   //Delete button click event
   $("table").on("click", ".deleteBtn", function () {
     $(this).closest("tr").remove();
   });
-
   ///////////////////////////////////////////////////////////////////////////////////////////////
   // GET method Populate data from "https://demo.cadcam-group.eu/api" to table NAZIV ARTIKLA/
   fetch("https://demo.cadcam-group.eu/api")
@@ -97,13 +91,50 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     })
     .catch((error) => console.log(error));
-
   ///////////////////////////////////////////////////////////////////////////////////////////////
   //SAVE ORDER
   //Handle form submission
   orderForm.addEventListener("submit", function (e) {
     e.preventDefault(); // Prevent the default form submission
+    // Definiranje podataka za POST zahtjev
+    const postDataNarudzbaId = [
+      {
+        action: "Narudzba_ID",
+      },
+    ];
 
+    var myHeaders_1 = new Headers();
+    myHeaders_1.append("Content-Type", "application/json");
+    var requestOptions_1 = {
+      method: "POST",
+      headers: myHeaders_1,
+      body: JSON.stringify(postDataNarudzbaId),
+      redirect: "follow",
+    };
+    // POST zahtjev na API endpoint
+    fetch("https://demo.cadcam-group.eu/api/", requestOptions_1)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        const narudzbaId = document.getElementById("narudzba_id");
+        narudzbaId.value = `${data[0].NextID}`;
+      })
+      .catch((error) => {
+        console.error("Došlo je do pogreške:", error);
+      });
+
+    //
+    console.log("čekam");
+    setTimeout(function () {
+      slanjeJSON();
+    }, 1000);
+  });
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  //SAVE ORDER
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // PRVI SLOBODNI ID za novu narudžbu
+
+  function slanjeJSON() {
     const formData = new FormData(orderForm);
     //Body
     const formDataJSON = {
@@ -120,7 +151,6 @@ document.addEventListener("DOMContentLoaded", function () {
       ],
       Data: [],
     };
-
     const tableRows = Array.from(orderTableBody.querySelectorAll("tr"));
     const selectElement = document.getElementById("list-products");
     for (const row of tableRows) {
@@ -128,18 +158,13 @@ document.addEventListener("DOMContentLoaded", function () {
       const p_NazivAllElements = row.querySelector("#nazivPR").value;
       const parts = p_NazivAllElements.split(" - ");
       //const p_NazivFirstElement = parts[0]; //trenutno ga ne koristimo jer ipak upisujemo sve podatke u JSON
-
       // Dohvatite odabrani proizvod iz datalista na temelju vrijednosti iz #nazivPR - ovako moramo raditi
       const selectedOption = Array.from(
         selectElement.querySelectorAll("option")
       ).find((option) => option.value === p_NazivAllElements);
-
       const barcode = selectedOption.getAttribute("data-barcode");
-
       const kolicina = row.querySelector("#quantity").value;
-
       const cijena = selectedOption.getAttribute("data-price");
-
       const rowData = {
         narudzba_id: formData.get("narudzba_id"),
         p_Naziv: p_NazivAllElements,
@@ -152,7 +177,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-
     var requestOptions = {
       method: "POST",
       headers: myHeaders,
@@ -163,7 +187,6 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((response) => {
         if (response.ok) {
           //Handle success
-
           alert("Data sent successfully!");
           console.log(JSON.stringify([formDataJSON]));
         } else {
@@ -174,7 +197,5 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((error) => {
         console.error("Error:", error);
       });
-  });
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  //SAVE ORDER
+  }
 });

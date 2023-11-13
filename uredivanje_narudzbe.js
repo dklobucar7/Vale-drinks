@@ -179,15 +179,17 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   //////////////////////////////////////////////////////////////////
   // Initialize Flatpickr with the desired options
-  flatpickr("#datumNarudzbe", {
-    dateFormat: "Y-m-d",
-    //defaultDate: "today", // Set the default date to today
-    allowInput: true, // Allow manual input
-  });
-  flatpickr("#datumDostave", {
-    dateFormat: "Y-m-d",
-    allowInput: true, // Allow manual input
-  });
+  // flatpickr("#datumNarudzbe", {
+  //   dateFormat: "Y-m-d",
+  //   defaultDate: "today", // Set the default date to today
+  //   allowInput: true, // Allow manual input
+  //   disableMobile: "true",
+  // });
+  // flatpickr("#datumDostave", {
+  //   dateFormat: "Y-m-d",
+  //   allowInput: true, // Allow manual input
+  //   disableMobile: "true",
+  // });
   // Initialize Flatpickr with the desired options
   //////////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////////////////
