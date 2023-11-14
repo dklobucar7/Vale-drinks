@@ -1,6 +1,62 @@
 document.addEventListener("DOMContentLoaded", function () {
   ////////////////////////////////////////////////////////////////////////////////////
   // POPULATE TABLE
+  // Get value of the narudzba_id parameter from the URL - preko URL smo prebacili ID NARUDZBE
+  const urlParams = new URLSearchParams(window.location.search);
+  const prodavac = urlParams.get("prodavac");
+  console.log(prodavac);
+
+  const postDataListaSvihNarudzbi = [
+    {
+      action: "Lista_svih_narudzbi",
+      user: prodavac,
+    },
+  ];
+
+  // POST zahtjev na API endpoint
+
+  function fetchDataAndAddToTable() {
+    fetch("https://demo.cadcam-group.eu/api/", {
+      method: "POST",
+      body: JSON.stringify(postDataListaSvihNarudzbi),
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Error fetching data.");
+        }
+      })
+      .then((data) => {
+        console.log(JSON.stringify(postDataListaSvihNarudzbi));
+        // Call createRow to add the fetched data to the table
+        console.log("Kreiram tablicu");
+
+        data.forEach((data) => {
+          createRow(data);
+        });
+
+        // Initialize the DataTable
+        $("#tablica").DataTable({
+          language: {
+            search: "Pretraži:",
+            info: "Prikazuje se _START_ do _END_ od _TOTAL_ unosa",
+            lengthMenu: "Prikaži _MENU_ unosa",
+            paginate: {
+              next: "Sljedeća",
+              previous: "Prethodna",
+            },
+          },
+        });
+      })
+      .catch((error) => {
+        console.error("Došlo je do pogreške:", error);
+      });
+  }
+  fetchDataAndAddToTable();
 
   function createRow(data) {
     // Access the tbody element where you want to append the new row
@@ -52,54 +108,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Append the new row to the table
     tableBody.appendChild(newRow);
   }
-
-  const postDataListaSvihNarudzbi = [
-    {
-      action: "Lista_svih_narudzbi",
-    },
-  ];
-
-  // POST zahtjev na API endpoint
-
-  function fetchDataAndAddToTable() {
-    fetch("https://demo.cadcam-group.eu/api/", {
-      method: "POST",
-      body: JSON.stringify(postDataListaSvihNarudzbi),
-      headers: {
-        "Content-type": "application/json",
-      },
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error("Error fetching data.");
-        }
-      })
-      .then((data) => {
-        // Call createRow to add the fetched data to the table
-        data.forEach((data) => {
-          createRow(data);
-        });
-
-        // Initialize the DataTable
-        $("#tablica").DataTable({
-          language: {
-            search: "Pretraži:",
-            info: "Prikazuje se _START_ do _END_ od _TOTAL_ unosa",
-            lengthMenu: "Prikaži _MENU_ unosa",
-            paginate: {
-              next: "Slijedeća",
-              previous: "Prethodna",
-            },
-          },
-        });
-      })
-      .catch((error) => {
-        console.error("Došlo je do pogreške:", error);
-      });
-  }
-  fetchDataAndAddToTable();
 
   // POPULATE TABLE
   ///////////////////////////////////////////////////////////////////////////////////////////

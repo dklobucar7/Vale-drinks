@@ -13,41 +13,60 @@
   </head>
   <body>
   <div class="container-fluid">
-          <!--NAVBAR-->
-    <div class="container-fluid">
-      <header class="d-flex py-3">
-        <a class="navbar-brand float-left" href="index.html">
-          <img src="./asstes/logo.png" alt="Logo" height="30" />
-        </a>
-        <ul class="nav mx-auto">
+             <!--NAVBAR-->
+   <div class="container-fluid">
+    <header class="d-flex py-3">
+      <a class="navbar-brand float-left" href="index.html">
+        <img src="./asstes/logo.png" alt="Logo" height="30" />
+      </a>
+      <ul class="nav mx-auto">
+        <li class="nav-item">
+          <a href="index.html" class="nav-link active" aria-current="page"
+            >Nova narudžba</a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="narudzbe.html" class="nav-link" aria-current="page"
+            >Sve narudžbe</a
+          >
+        </li>
+        <li class="nav-orders-items">
+          <a href="narudzbe-items.html" class="nav-link" aria-current="page"
+            >Proizvodi prema narudžbama</a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="novi_korisnik.html" class="nav-link">Novi korisnik</a>
+        </li>
+        <li class="nav-item">
+          <a href="uredivanje_narudzbe.html" class="nav-link" aria-current="page"
+            >Uređivanje narudžbe</a
+          >
+        </li>
+        
           <li class="nav-item">
-            <a href="index.html" class="nav-link active" aria-current="page"
-              >Spremi narudžbu</a
-            >
-          </li>
-          <li class="nav-item">
-            <a href="narudzbe.html" class="nav-link" aria-current="page"
-              >Sve narudžbe</a
-            >
-          </li>
-          <li class="nav-orders-items">
-            <a href="narudzbe-items.html" class="nav-link" aria-current="page"
-              >Proizvodi prema narudžbama</a
-            >
-          </li>
-          <li class="nav-item">
-            <a href="novi_korisnik.html" class="nav-link">Novi korisnik</a>
-          </li>
-          <li class="nav-item">
-            <a href="uredivanje_narudzbe.html" class="nav-link" aria-current="page"
-              >Uređivanje narudžbe</a
-            >
-          </li>
-        </ul>
-      </header>
-    </div>
+            
+        </li>
+      </ul>
+      <ul>
+        <div class="row mb-3">
+          <div class="col ">
+            <input
+              type="text"
+              class="form-control border-warning border-2 text-dark text-center"
+              name="guid"
+              id="guid"
+              list="list-salesman"
+              value=""
+              required
+            />
+          </div>
+        </div>
+      </ul>
+    </header>
   </div>
-    <!--NAVBAR-->
+</div>
+  <!--NAVBAR-->
 
     <div class="container">
       <div class="col-md-7 col-lg-8 mt-3">

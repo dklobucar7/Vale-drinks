@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
     orderTableBody.insertAdjacentHTML("beforeend", newRow);
   });
-  //Delete button click event
+  //Delete button click evente
   $("table").on("click", ".deleteBtn", function () {
     $(this).closest("tr").remove();
   });
@@ -136,6 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function slanjeJSON() {
     const formData = new FormData(orderForm);
+    const prodavac = formData.get("prodavac"); // Get the value of prodavac
     //Body
     const formDataJSON = {
       action: "Narudzba",
@@ -189,6 +190,11 @@ document.addEventListener("DOMContentLoaded", function () {
           //Handle success
           alert("Data sent successfully!");
           console.log(JSON.stringify([formDataJSON]));
+
+          // Redirect to
+          window.location.href = `https://demo.cadcam-group.eu/narudzbe.html?prodavac=${encodeURIComponent(
+            prodavac
+          )}`;
         } else {
           //Handle error
           console.error("Error sending data.");

@@ -4,10 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Valentic d.o.o.</title>
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -18,10 +14,11 @@
     <!--DATE PICKER DATUM NARUDŽBE i VRIJEME DOSTAVE-->
     <!-- Include Bootstrap CSS -->
     <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
     />
-
     <!-- Include Flatpickr CSS -->
     <link
       rel="stylesheet"
@@ -35,40 +32,59 @@
   <body>
     <div class="container-fluid">
       <!--NAVBAR-->
-    <div class="container-fluid">
-      <header class="d-flex py-3">
-        <a class="navbar-brand float-left" href="index.html">
-          <img src="./asstes/logo.png" alt="Logo" height="30" />
-        </a>
-        <ul class="nav mx-auto">
-          <li class="nav-item">
-            <a href="index.html" class="nav-link active" aria-current="page"
-              >Nova narudžba</a
-            >
-          </li>
-          <li class="nav-item">
-            <a href="narudzbe.html" class="nav-link" aria-current="page"
-              >Sve narudžbe</a
-            >
-          </li>
-          <li class="nav-orders-items">
-            <a href="narudzbe-items.html" class="nav-link" aria-current="page"
-              >Proizvodi prema narudžbama</a
-            >
-          </li>
-          <li class="nav-item">
-            <a href="novi_korisnik.html" class="nav-link">Novi korisnik</a>
-          </li>
-          <li class="nav-item">
-            <a href="uredivanje_narudzbe.html" class="nav-link" aria-current="page"
-              >Uređivanje narudžbe</a
-            >
-          </li>
-        </ul>
-      </header>
+      <div class="container-fluid">
+        <header class="d-flex py-3">
+          <a class="navbar-brand float-left" href="index.html">
+            <img src="./asstes/logo.png" alt="Logo" height="30" />
+          </a>
+          <ul class="nav mx-auto">
+            <li class="nav-item">
+              <a href="index.html" class="nav-link active" aria-current="page"
+                >Nova narudžba</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="narudzbe.html" class="nav-link" aria-current="page"
+                >Sve narudžbe</a
+              >
+            </li>
+            <li class="nav-orders-items">
+              <a href="prodavaci.html" class="nav-link" aria-current="page"
+                >Prodavaci</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="novi_korisnik.html" class="nav-link">Novi korisnik</a>
+            </li>
+            <li class="nav-item">
+              <a href="uredivanje_narudzbe.html" class="nav-link" aria-current="page"
+                >Uređivanje narudžbe</a
+              >
+            </li>
+            
+              <li class="nav-item">
+                
+            </li>
+          </ul>
+          <ul>
+            <div class="row mb-3">
+              <div class="col ">
+                <input
+                  type="text"
+                  class="form-control border-warning border-2 text-dark text-center"
+                  name="guid"
+                  id="guid"
+                  list="list-salesman"
+                  value=""
+                  required
+                />
+              </div>
+            </div>
+          </ul>
+        </header>
+      </div>
     </div>
-  </div>
-    <!--NAVBAR-->
+      <!--NAVBAR-->
 
     <div class="container-fluid" id="main-container">
       <div class="container-fluid" id="formOrderData-container">
@@ -112,13 +128,14 @@
             </div>
           </div>
             <!--NARUČITELJ-->
-            <div class="row mb-3">
+            <div class="row mb-3" id="narucitelj-container">
               <label
                 for="narucitelj"
-                class="input-group-text col-sm-3 col-form-label"
+                class="input-group-text col-form-label col-sm-3"
+                id="narucitelj-label"
                 >Naručitelj</label
               >
-              <div class="col">
+              <div class="col-sm-7 col-md-8">
                 <input
                   type="text"
                   class="form-control"
@@ -129,12 +146,13 @@
                   required
                 />
               </div>
-              <!--Button + kreiraj Naručitelja-->
-              <a
-                class="btn btn-success mr-3"
+              <div class="col-sm-2 col-md-1 text-sm-end text-end text-md-end" id="button-narucitelj">
+                <a
+                class="btn btn-success"
                 target="_blank"
                 href="novi_korisnik.html"
                 role="button"
+                
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -152,6 +170,13 @@
                   />
                 </svg>
               </a>
+              
+              <!--Button + kreiraj Naručitelja-->
+
+              </div>
+              
+               
+             
             </div>
 
             <!--DATUM KREIRANJE NARUDŽBE-->
@@ -229,7 +254,7 @@
           </div>
   
           <!--BUTTON SUBMIT TABLE ITEMS-->
-          <div class="row mt-3 mr-1 float-right" id="button-submit">
+          <div class="container-fluid my-3 text-sm-end mr-3" id="button-submit">
             <button type="submit" class="btn btn-primary">
               Spremi Narudžbu
             </button>
