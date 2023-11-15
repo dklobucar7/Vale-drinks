@@ -11,7 +11,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
-    <!--DATE PICKER DATUM NARUDŽBE i VRIJEME DOSTAVE-->
+
     <!-- Include Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -19,6 +19,8 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
+    <!-- Bootstrap ICONS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <!-- Include Flatpickr CSS -->
     <link
       rel="stylesheet"
@@ -45,16 +47,16 @@
             </li>
             <li class="nav-item">
               <a href="narudzbe.html" class="nav-link" aria-current="page"
-                >Sve narudžbe</a
+                >Narudžbe</a
               >
             </li>
             <li class="nav-orders-items">
               <a href="prodavaci.html" class="nav-link" aria-current="page"
-                >Prodavaci</a
+                >Prodavači</a
               >
             </li>
             <li class="nav-item">
-              <a href="novi_korisnik.html" class="nav-link">Novi korisnik</a>
+              <a href="kupci.html" class="nav-link">Kupci</a>
             </li>
             <li class="nav-item">
               <a href="uredivanje_narudzbe.html" class="nav-link" aria-current="page"
@@ -85,6 +87,7 @@
       </div>
     </div>
       <!--NAVBAR-->
+      
 
     <div class="container-fluid" id="main-container">
       <div class="container-fluid" id="formOrderData-container">
@@ -115,7 +118,7 @@
               class="input-group-text col-sm-3 col-form-label"
               >Prodavač</label
             >
-            <div class="col">
+            <div class="col-sm-7 col-md-8">
               <input
                 type="text"
                 class="form-control"
@@ -125,6 +128,18 @@
                 value="Danijel"
                 required
               />
+            </div>
+            <div class="col-sm-2 col-md-1 text-sm-end text-end text-md-end">
+              <a
+                class="btn btn-warning"
+                target="_blank"
+                href="prodavaci.html"
+                role="button"
+                
+              >
+              <i class="bi bi-person-add"></i>
+              </a>
+
             </div>
           </div>
             <!--NARUČITELJ-->
@@ -148,27 +163,13 @@
               </div>
               <div class="col-sm-2 col-md-1 text-sm-end text-end text-md-end" id="button-narucitelj">
                 <a
-                class="btn btn-success"
+                class="btn btn-dark"
                 target="_blank"
                 href="novi_korisnik.html"
                 role="button"
                 
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-plus-circle"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
-                  />
-                  <path
-                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
-                  />
-                </svg>
+              <i class="bi bi-people"></i>
               </a>
               
               <!--Button + kreiraj Naručitelja-->
@@ -255,7 +256,7 @@
   
           <!--BUTTON SUBMIT TABLE ITEMS-->
           <div class="container-fluid my-3 text-sm-end mr-3" id="button-submit">
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-primary text-uppercase">
               Spremi Narudžbu
             </button>
           </div>
