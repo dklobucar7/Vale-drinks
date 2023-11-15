@@ -11,6 +11,11 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
+    <!-- Bootstrap ICONS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
 
     <!--STYLE.CSS-->
     <link rel="stylesheet" href="./prodavaci.css" />
@@ -73,5 +78,212 @@
       </div>
     </div>
     <!--NAVBAR-->
+    <div class="container-fluid">
+      <!-- Button trigger modal START-->
+      <button
+        type="button"
+        class="btn btn-warning text-uppercase fw-bold"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        <i class="bi bi-person-add"></i>
+        Dodajte prodavača
+      </button>
+      <!-- Button trigger modal END -->
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">
+                Dodajte prodavača
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <!--MODAL BODY START-->
+              <h5>Informacije o prodavaču:</h5>
+              <br />
+
+              <div class="row my-1">
+                <label class="col-sm-3 col-form-label" for="ime-prodavaca"
+                  >Ime:</label
+                >
+                <div class="col-sm-9">
+                  <input
+                    type="text"
+                    name="ime-prodavaca"
+                    id="ime-prodavaca"
+                    value=""
+                    placeholder="Upišite ime"
+                    class="form-control"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="row my-1">
+                <label class="col-sm-3 col-form-label" for="prezime-prodavaca"
+                  >Prezime:</label
+                >
+                <div class="col-sm-9">
+                  <input
+                    type="text"
+                    name="prezime-prodavaca"
+                    id="prezime-prodavaca"
+                    value=""
+                    placeholder="Upišite prezime"
+                    class="form-control"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="row my-1">
+                <label class="col-sm-3 col-form-label" for="adresa-prodavaca"
+                  >Adresa:</label
+                >
+                <div class="col-sm-9">
+                  <input
+                    type="text"
+                    name="adresa-prodavaca"
+                    id="adresa-prodavaca"
+                    value=""
+                    placeholder="Upišite ime ulice"
+                    class="form-control"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="row my-1">
+                <label
+                  class="col-sm-3 col-form-label"
+                  for="postanski-broj-prodavaca"
+                  >Pošt. broj:</label
+                >
+                <div class="col-sm-9">
+                  <input
+                    type="text"
+                    name="postanski-broj-prodavaca"
+                    id="postanski-broj-prodavaca"
+                    value=""
+                    placeholder="Upišite Poštanski broj"
+                    class="form-control"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="row my-1">
+                <label class="col-sm-3 col-form-label" for="grad-firme"
+                  >Grad:</label
+                >
+                <div class="col-sm-9">
+                  <input
+                    type="text"
+                    name="grad-firme"
+                    id="grad-firme"
+                    value=""
+                    placeholder="Upišite ime grada"
+                    class="form-control"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="row my-1">
+                <label class="col-sm-3 col-form-label" for="email-prodavaca"
+                  >Email:</label
+                >
+                <div class="col-sm-9">
+                  <input
+                    type="text"
+                    name="email-prodavaca"
+                    id="email-prodavaca"
+                    value=""
+                    placeholder="Upišite E-mail"
+                    class="form-control"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="row my-1">
+                <label class="col-sm-3 col-form-label" for="kontakt-prodavaca"
+                  >Kontakt:</label
+                >
+                <div class="col-sm-9">
+                  <input
+                    type="text"
+                    name="kontakt-prodavaca"
+                    id="kontakt-prodavaca"
+                    value=""
+                    placeholder="Upišite kontakt broj"
+                    class="form-control"
+                    required
+                  />
+                </div>
+              </div>
+
+              <!--MODAL BODY END-->
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Zatvori
+              </button>
+              <button type="button" class="btn btn-primary">Spremi</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="mt-3 mb-2">Postojeći kupci</h3>
+      <div class="container-fluid">
+        <table id="example" class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th>Naziv firme</th>
+              <th>Adresa</th>
+              <th>Kontakt</th>
+              <th>Akcija</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <!--Ovdje trebamo staviti nove predložene knjige-->
+              <td>Legiero kod mosta</td>
+              <td>Most 33</td>
+              <td>info@legiero.hr</td>
+              <td>
+                <button class="btn btn-primary m-1">
+                  <i class="bi bi-pencil"></i>
+                </button>
+                <button class="btn btn-danger m-1">
+                  <i class="bi bi-dash-circle"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
