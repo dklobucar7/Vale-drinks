@@ -31,9 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       })
       .then((data) => {
-        console.log(JSON.stringify(postDataListaSvihNarudzbi));
         // Call createRow to add the fetched data to the table
-        console.log("Kreiram tablicu");
 
         data.forEach((data) => {
           createRow(data);
