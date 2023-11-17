@@ -70,4 +70,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   ///////////////////////////////////////////
   // POST API SVI PRODAVAC END
+
+
+  //////////////////////////////////////////
+  // POST API ZA KREIRANJE PRODAVAČA START
+  
+  
+
+  //////////////////////////////////////////
+  // POST API ZA KREIRANJE PRODAVAČA ENDs
 });
