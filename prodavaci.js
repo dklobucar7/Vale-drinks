@@ -134,8 +134,6 @@ document.addEventListener("DOMContentLoaded", function () {
   //////////////////////////////////////////
   // DELETE API ZA PRODAVAČA START
 
-  //const tBody = document.getElementById("table-body");
-
   // Detecting delete button
   $("#table-body").on("click", ".deleteBtn", function () {
     const prodavacId = $(this).closest("tr").find("#prodavac-id").text();
@@ -160,8 +158,6 @@ document.addEventListener("DOMContentLoaded", function () {
     })
       .then((response) => {
         if (response.ok) {
-          console.log("Prodavac je obrisan");
-          console.log(JSON.stringify(rowData));
           location.reload();
         } else {
           console.error("Error sending data.");

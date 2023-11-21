@@ -11,16 +11,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     newRow.innerHTML = `
     <td>${id}</td>
-    <td>${data.id}</td>
-    <td>${data.ime}</td>
-    <td>${data.adresa}</td>
-    <td>${data.mail}</td>
-    <td>${data.telefon}</td>
+    <td id="kupac-id">${data.id}</td>
+    <td id="kupac-ime">${data.ime}</td>
+    <td id="kupac-adresa">${data.adresa}</td>
+    <td id="kupac-mail">${data.mail}</td>
+    <td id="kupac-telefon">${data.telefon}</td>
     <td>
-        <button class="btn btn-primary m-1">
+        <button class="btn btn-primary editBtn m-1">
             <i class="bi bi-pencil"></i>
         </button>
-        <button class="btn btn-danger m-1">
+        <button class="btn btn-danger deleteBtn m-1">
             <i class="bi bi-dash-circle"></i>
         </button>
     </td> 
@@ -135,10 +135,50 @@ document.addEventListener("DOMContentLoaded", function () {
   ////////////////////////////////////////////////////////////////
 
   ////////////////////////////////////////////////////////////////
-  // BRISANJE KORISNIKA START
+  // DELETE CLIENT START
 
-  $("#table-body").on("click")
+  // Detecting delete button
+  $("#table-body").on("click", ".deleteBtn", function () {
+    //Get id from specific client
+    const kupcacId = $(this).closest("tr").find("#kupac-id").text();
 
-  // BRISANJE KORISNIKA END
+    const rowData = [
+      {
+        action: "tblklijenti-",
+        Parameters: [
+          {
+            id: kupcacId,
+          },
+        ],
+      },
+    ];
+
+    const myHeaders = new Headers();
+    myHeaders.append = ("Content-Type", "application/josn");
+
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: JSON.stringify(rowData),
+    };
+
+    fetch("https://demo.cadcam-group.eu/api/", requestOptions)
+      .then((response) => {
+        if (response.ok) {
+          console.log(JSON.stringify(rowData));
+          location.reload();
+        } else {
+          console.error("Error sending data.");
+        }
+      })
+
+      .catch((error) => {
+        console.error("Error: ", error);
+      });
+  });
+
+  // DELETE CLIENT END
   ////////////////////////////////////////////////////////////////
+
+  
 });
