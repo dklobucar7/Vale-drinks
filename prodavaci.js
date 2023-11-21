@@ -23,7 +23,9 @@ document.addEventListener("DOMContentLoaded", function () {
         </button>
     </td> 
     `;
+    //Increase id
     id++;
+
     //Append the new row to the table
     tableBody.appendChild(newRow);
   }
@@ -116,7 +118,6 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch("https://demo.cadcam-group.eu/admin/", requestOptions)
       .then((response) => {
         if (response.ok) {
-          console.log(JSON.stringify(jsonData));
           location.reload();
         } else {
           console.error("Error sending data.");
@@ -125,8 +126,6 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((error) => {
         console.error("Došlo je do pogreške:", error);
       });
-
-    console.log(JSON.stringify(jsonData));
   });
 
   // POST API ZA KREIRANJE PRODAVAČA ENDs
