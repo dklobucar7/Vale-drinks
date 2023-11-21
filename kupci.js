@@ -166,7 +166,6 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch("https://demo.cadcam-group.eu/api/", requestOptions)
       .then((response) => {
         if (response.ok) {
-          console.log(JSON.stringify(rowData));
           location.reload();
         } else {
           console.error("Error sending data.");
@@ -190,7 +189,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const kupacId = $(this).closest("tr").find("#kupac-id").text();
     const kupacIme = $(this).closest("tr").find("#kupac-ime").text();
     const kupacAdresa = $(this).closest("tr").find("#kupac-adresa").text();
-    const kupacGrad = $(this).closest("tr").find("#grad-firme").text();
+    const kupacGrad = $(this).closest("tr").find("#kupac-grad").text();
     const kupacMail = $(this).closest("tr").find("#kupac-mail").text();
     const kupacTelefon = $(this).closest("tr").find("#kupac-telefon").text();
 
@@ -207,5 +206,49 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // EDIT CLIENT END
+  ////////////////////////////////////////////////////////////////
+
+  ////////////////////////////////////////////////////////////////
+  // First free ID for Client START
+
+  $("#id-firme").val("");
+  $("#naziv-firme").val("");
+  $("#adresa-firme").val("");
+  $("#grad-firme").val("");
+  $("#email-firme").val("");
+  $("#kontakt-firme").val("");
+
+  const jsonData = [
+    {
+      action: "tblklijenti*",
+    },
+  ];
+
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "applicaiton/json");
+
+  const requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: JSON.stringify(jsonData),
+  };
+
+  fetch("https://demo.cadcam-group.eu/admin/", requestOptions)
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        console.error("Error sending data.");
+      }
+    })
+    .then((data) => {
+      const clientId = document.getElementById("id-firme");
+      clientId.value = `${data[0].id}`;
+    })
+    .catch((error) => {
+      console.error("Error: ", error);
+    });
+
+  // First free ID for Client START
   ////////////////////////////////////////////////////////////////
 });
