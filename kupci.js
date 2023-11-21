@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <td id="kupac-id">${data.id}</td>
     <td id="kupac-ime">${data.ime}</td>
     <td id="kupac-adresa">${data.adresa}</td>
+    <td id="kupac-grad">${data.prezime}</td>
     <td id="kupac-mail">${data.mail}</td>
     <td id="kupac-telefon">${data.telefon}</td>
     <td>
@@ -180,5 +181,31 @@ document.addEventListener("DOMContentLoaded", function () {
   // DELETE CLIENT END
   ////////////////////////////////////////////////////////////////
 
-  
+  ////////////////////////////////////////////////////////////////
+  // EDIT CLIENT START
+
+  // Detecting edit button
+  $("#table-body").on("click", ".editBtn", function () {
+    // GET values
+    const kupacId = $(this).closest("tr").find("#kupac-id").text();
+    const kupacIme = $(this).closest("tr").find("#kupac-ime").text();
+    const kupacAdresa = $(this).closest("tr").find("#kupac-adresa").text();
+    const kupacGrad = $(this).closest("tr").find("#grad-firme").text();
+    const kupacMail = $(this).closest("tr").find("#kupac-mail").text();
+    const kupacTelefon = $(this).closest("tr").find("#kupac-telefon").text();
+
+    // Set values into Modal
+    $("#id-firme").val(kupacId);
+    $("#naziv-firme").val(kupacIme);
+    $("#adresa-firme").val(kupacAdresa);
+    $("#grad-firme").val(kupacGrad);
+    $("#email-firme").val(kupacMail);
+    $("#kontakt-firme").val(kupacTelefon);
+
+    // Otvaranje modala
+    $("#exampleModal").modal("show");
+  });
+
+  // EDIT CLIENT END
+  ////////////////////////////////////////////////////////////////
 });
