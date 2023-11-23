@@ -1,3 +1,5 @@
+//////////////////////////////////////////////////////////
+// FETCH ITEM PRICE START
 // Function to fetch item price and update the table row
 function fetchItemPrice(inputElement) {
   // Define selectElement here to access the select element
@@ -12,7 +14,49 @@ function fetchItemPrice(inputElement) {
     priceInput.value = price;
   }
 }
+// FETCH ITEM PRICE END
+//////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+//FETCH SALESMAN-ID START
+
+function fetchSalesmanId(inputElement) {
+  // Define selectElement here to access the select element
+  const selectElement = document.getElementById("list-salesman");
+  const selectedOption = Array.from(
+    selectElement.querySelectorAll("option")
+  ).find((option) => option.value === inputElement.value);
+  if (selectedOption) {
+    const salesmanId = selectedOption.getAttribute("client-id");
+    return salesmanId;
+  }
+}
+//FETCH SALESMAN-ID END
+///////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////
+// FETCH CLIENT ID START
+
+function fetchClientId(inputElement) {
+  const selectElement = document.getElementById("list-clients");
+  const selectedOption = Array.from(
+    selectElement.querySelectorAll("option")
+  ).find((option) => option.value === inputElement.value);
+  if (selectedOption) {
+    const clientId = selectedOption.getAttribute("client-id");
+    return clientId;
+  }
+}
+
+// FETCH CLIENT ID END
+/////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
+// DOM
+
 document.addEventListener("DOMContentLoaded", function () {
+  let salesmanId;
+  let clientId;
   //Initialization of DOM elements
   const orderForm = document.getElementById("orderForm");
   const orderTableBody = document.getElementById("tbody");
@@ -124,6 +168,9 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
     //
+    salesmanId = fetchSalesmanId(prodavac);
+    clientId = fetchClientId(narucitelj);
+    //
     console.log("čekam");
     setTimeout(function () {
       slanjeJSON();
@@ -137,6 +184,8 @@ document.addEventListener("DOMContentLoaded", function () {
   function slanjeJSON() {
     const formData = new FormData(orderForm);
     const prodavac = formData.get("prodavac"); // Get the value of prodavac
+    const narucitelj = formData.get("narucitelj");
+
     //Body
     const formDataJSON = {
       action: "Narudzba",
@@ -148,6 +197,8 @@ document.addEventListener("DOMContentLoaded", function () {
           datumNarudzbe: formData.get("datumNarudzbe"),
           datumDostave: formData.get("datumDostave"),
           adresaDostave: formData.get("narucitelj").split(" - ")[1] || "",
+          prodavaci_id: salesmanId,
+          klijenti_id: clientId,
         },
       ],
       Data: [],

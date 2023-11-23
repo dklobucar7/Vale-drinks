@@ -125,7 +125,8 @@
                 name="prodavac"
                 id="prodavac"
                 list="list-salesman"
-                value="Danijel"
+                value=""
+                oninput="fetchSalesmanId(this)"
                 required
               />
             </div>
@@ -157,7 +158,8 @@
                   name="narucitelj"
                   id="narucitelj"
                   list="list-clients"
-                  value="Legiero kod mosta - Most 33"
+                  value=""
+                  oninput="fetchClientId(this)"
                   required
                 />
               </div>
@@ -269,8 +271,7 @@
 
       <!--LISTA PRODAVAČA-->
       <datalist id="list-salesman">
-        <option>Ivan Horvat</option>
-        <option>Marko Horvat</option>
+
 
       </datalist>
       <!--LISTA PRODUKTA-->
@@ -325,19 +326,19 @@
         const datalistProdavac = document.getElementById("list-salesman");
         // Prolazimo kroz dobivene podatke i dodajemo ih kao opcije u datalist
         data.forEach(client =>{
-          const optionProdavac = document.createElement('option');
-          optionProdavac.value = client.ime + " " + client.prezime;
-          datalistProdavac.appendChild(optionProdavac);
+          const markup = `<option client-id="${client.id}" client-guid="${client.GUID}">${client.ime + " " + client.prezime}</options>`;
+
+          document.querySelector("#list-salesman").insertAdjacentHTML("beforeend", markup);
         });
       }
       // Definiranje podataka za POST zahtjev
       const postDataProdavac = [
     {
-        "action": "Prodavaci"
+        "action": "tblprodavaci"
     }
 ];
       // POST zahtjev na API endpoint
-      fetch('https://demo.cadcam-group.eu/api/', {
+      fetch('https://demo.cadcam-group.eu/admin/', {
         method: 'POST',
         body: JSON.stringify(postDataProdavac),
         headers: {
@@ -361,21 +362,21 @@
 
       // Prolazimo kroz dobivene podatke i dodajemo ih kao opcije u datalist
       data.forEach(client => {
-          const option = document.createElement('option');
-          option.value = client.ime + " - " + client.adresa;
-          datalist.appendChild(option);
+        const markup= `<option client-id="${client.id}" client-oib="${client.OIB}">${client.ime + " - " + client.adresa}</option>`;
+        datalist.insertAdjacentHTML("beforeend", markup);
+         
       });
   }
 
   // Definirajte podatke za POST zahtjev
   const postDataNarucitelji = [
       {
-          "action": "Klijenti"
+          "action": "tblklijenti"
       }
   ];
 
   // POST zahtjev na API endpoint
-  fetch('https://demo.cadcam-group.eu/api/', {
+  fetch('https://demo.cadcam-group.eu/admin/', {
       method: 'POST',
       body: JSON.stringify(postDataNarucitelji),
       headers: {
