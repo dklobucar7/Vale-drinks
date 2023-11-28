@@ -28,7 +28,7 @@
     />
 
     <!--STYLE.CSS-->
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="index.css" />
   </head>
 
   <body>
@@ -50,7 +50,7 @@
                 >Narudžbe</a
               >
             </li>
-            <li class="nav-orders-items">
+            <li class="nav-item">
               <a href="prodavaci.html" class="nav-link" aria-current="page"
                 >Prodavači</a
               >
@@ -70,10 +70,10 @@
           </ul>
           <ul>
             <div class="row mb-3">
-              <div class="col ">
+              <div class="col guid-class">
                 <input
                   type="text"
-                  class="form-control border-warning border-2 text-dark text-center"
+                  class="form-control border-warning border-2 text-dark text-center guid-class"
                   name="guid"
                   id="guid"
                   list="list-salesman"
@@ -132,7 +132,7 @@
             </div>
             <div class="col-sm-2 col-md-1 text-sm-end text-end text-md-end">
               <a
-                class="btn btn-warning"
+                class="btn btn-warning btn-prodavaci"
                 target="_blank"
                 href="prodavaci.html"
                 role="button"
@@ -165,7 +165,7 @@
               </div>
               <div class="col-sm-2 col-md-1 text-sm-end text-end text-md-end" id="button-narucitelj">
                 <a
-                class="btn btn-dark"
+                class="btn btn-dark btn-kupci"
                 target="_blank"
                 href="kupci.html"
                 role="button"
@@ -239,7 +239,7 @@
             </table>
   
             <!--BUTTON DODAJTE ARTIKL-->
-            <a class="btn btn-success mr-3" role="button" id="addRow">
+            <a class="btn btn-success mr-3 btn-plus" role="button" id="addRow">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -258,7 +258,7 @@
   
           <!--BUTTON SUBMIT TABLE ITEMS-->
           <div class="container-fluid my-3 text-sm-end mr-3" id="button-submit">
-            <button type="submit" class="btn btn-primary text-uppercase">
+            <button type="submit" class="btn btn-primary text-uppercase btn-spremi">
               Spremi Narudžbu
             </button>
           </div>

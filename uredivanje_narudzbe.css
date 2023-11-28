@@ -1,6 +1,12 @@
 /*  RESET */
 
-
+button {
+    border:initial;
+    background-color: initial;
+    color: inherit;
+    font: inherit; /* inherit all of fonts (font-family and font-size)*/   
+    outline: none; /*We remove ugly outline for TAB on keyboard for focus state*/
+}
 input {
     font: inherit; /*we want to force all of the input fields to inherit all the styles related to the font*/
     border:none;
@@ -50,17 +56,6 @@ input {
     }
 }
 
-.btnCreate {
-    transition: all 0.5s;
-    animation: fade-in-from-left 1s;
-
-}
-
-.btnCreate:hover,
-.btnCreate:focus {
-    transform: scale(1.05);  
-}
-
 .nav-link {
     color: rgba(10,88,212, 0.7);
     transition: all 0.2s;
@@ -91,16 +86,60 @@ input {
 }
 
 .input-group-text {
-    animation: fade-in 0.5s;
+    animation: fade-in-from-left 0.5s;
 }
 
 .form-control {
-    animation: fade-in 0.5s;
+    animation: fade-in-from-right 0.5s;
 }
 
+.btn-kupci {
+    animation: fade-in-from-right 0.5s;
+    width: 40px;
+    transition: all 0.5s;
+}
 
+.btn-kupci:hover,
+.btn-kupci:focus {
+    width: 80px;
+}
 
+.btn-prodavaci {
+    animation: fade-in-from-right 0.5s;
+    width: 40px;
+    transition: all 0.5s;
+}
+.btn-prodavaci:hover,
+.btn-prodavaci:focus {
+    width: 80px;
+}
 
-.tablica {
-    animation: fade-in 1s 0.5s backwards;
+.btn-spremi {
+    animation: fade-in 0.5s 0.6s backwards;
+    transition: all 0.5s;
+}
+
+.btn-spremi:hover {
+    transform: scale(1.05);
+}
+
+.btn-plus {
+    animation: fade-in 0.5s 0.6s backwards;
+    width: 40px;
+    height: 40px;
+    transition: all 0.5s;
+}
+
+.btn-plus:hover {
+    transform: scale(1.2);
+}
+
+.deleteBtn {
+    animation: fade-in-from-right 0.5s;
+    transition: all 0.5s;
+}
+
+.deleteBtn:hover,
+.deleteBtn:focus {
+    transform: scale(1.2);
 }

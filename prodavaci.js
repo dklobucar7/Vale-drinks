@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <td id="prodavac-mail">${data.mail}</td>
     <td id="prodavac-telefon">${data.telefon}</td>
     <td id="prodavac-adresa">${data.adresa}</td>
+    <td id="prodavac-adresa">${data.password}</td>
     <td>
         <button class="btn btn-primary editBtn m-1">
             <i class="bi bi-pencil"></i>
@@ -100,6 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
             mail: formData.get("email-prodavaca"),
             adresa: formData.get("adresa-prodavaca"),
             telefon: formData.get("kontakt-prodavaca"),
+            password: formData.get("lozinka-prodavaca"),
           },
         ],
       },

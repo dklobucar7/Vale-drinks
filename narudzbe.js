@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
             info: "Prikazuje se _START_ do _END_ od _TOTAL_ unosa",
             lengthMenu: "Prikaži _MENU_ unosa",
             paginate: {
-              next: "Sljedeća",
+              next: "Slijedeća",
               previous: "Prethodna",
             },
           },

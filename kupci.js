@@ -12,9 +12,10 @@ document.addEventListener("DOMContentLoaded", function () {
     newRow.innerHTML = `
     <td>${id}</td>
     <td id="kupac-id">${data.id}</td>
+    <td id="kupac-oib">${data.OIB}</td>
     <td id="kupac-ime">${data.ime}</td>
     <td id="kupac-adresa">${data.adresa}</td>
-    <td id="kupac-grad">${data.prezime}</td>
+    <td id="kupac-grad">${data.Grad}</td>
     <td id="kupac-mail">${data.mail}</td>
     <td id="kupac-telefon">${data.telefon}</td>
     <td>
@@ -99,9 +100,10 @@ document.addEventListener("DOMContentLoaded", function () {
         Data: [
           {
             id: formData.get("id-firme"),
+            OIB: formData.get("oib-firme"),
             ime: formData.get("naziv-firme"),
             adresa: formData.get("adresa-firme"),
-            prezime: formData.get("grad-firme"),
+            Grad: formData.get("grad-firme"),
             mail: formData.get("email-firme"),
             telefon: formData.get("kontakt-firme"),
           },
@@ -187,6 +189,7 @@ document.addEventListener("DOMContentLoaded", function () {
   $("#table-body").on("click", ".editBtn", function () {
     // GET values
     const kupacId = $(this).closest("tr").find("#kupac-id").text();
+    const kupacOib = $(this).closest("tr").find("#kupac-oib").text();
     const kupacIme = $(this).closest("tr").find("#kupac-ime").text();
     const kupacAdresa = $(this).closest("tr").find("#kupac-adresa").text();
     const kupacGrad = $(this).closest("tr").find("#kupac-grad").text();
@@ -195,6 +198,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Set values into Modal
     $("#id-firme").val(kupacId);
+    $("#oib-firme").val(kupacOib);
     $("#naziv-firme").val(kupacIme);
     $("#adresa-firme").val(kupacAdresa);
     $("#grad-firme").val(kupacGrad);
@@ -210,7 +214,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   ////////////////////////////////////////////////////////////////
   // First free ID for Client START
-
+  $("#oib-firme").val("");
   $("#id-firme").val("");
   $("#naziv-firme").val("");
   $("#adresa-firme").val("");
